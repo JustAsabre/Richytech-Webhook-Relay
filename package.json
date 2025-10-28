@@ -1,0 +1,21 @@
+{
+  "name": "webhook-relay",
+  "version": "1.0.0",
+  "description": "Webhook Relay Service - Full-stack webhook management platform",
+  "author": "Richytech.inc",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "install": "cd backend && npm install",
+    "start": "cd backend && npm start",
+    "build": "cd backend && npm install --production",
+    "heroku-postbuild": "cd backend && npm install --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JustAsabre/Richytech-Webhook-Relay.git"
+  }
+}
