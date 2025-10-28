@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
+import SpotlightCard from '../components/SpotlightCard';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 import {
@@ -110,12 +111,12 @@ export default function Analytics() {
       <DashboardLayout>
         <div className="p-6">
           <div className="animate-pulse space-y-6">
-            <div className="h-8 bg-gray-200 rounded w-1/4"></div>
+            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="h-80 bg-gray-200 rounded"></div>
-              <div className="h-80 bg-gray-200 rounded"></div>
-              <div className="h-80 bg-gray-200 rounded"></div>
-              <div className="h-80 bg-gray-200 rounded"></div>
+              <div className="h-80 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-80 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-80 bg-gray-200 dark:bg-gray-700 rounded"></div>
+              <div className="h-80 bg-gray-200 dark:bg-gray-700 rounded"></div>
             </div>
           </div>
         </div>
@@ -129,8 +130,8 @@ export default function Analytics() {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Analytics Dashboard</h1>
-            <p className="mt-1 text-sm text-gray-600">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h1>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
               Comprehensive insights into your webhook activity
             </p>
           </div>
@@ -139,8 +140,8 @@ export default function Analytics() {
               onClick={() => setTimeRange(7)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 timeRange === 7
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                  ? 'bg-indigo-600 dark:bg-indigo-700 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               7 Days
@@ -149,8 +150,8 @@ export default function Analytics() {
               onClick={() => setTimeRange(30)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 timeRange === 30
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                  ? 'bg-indigo-600 dark:bg-indigo-700 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               30 Days
@@ -159,8 +160,8 @@ export default function Analytics() {
               onClick={() => setTimeRange(90)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 timeRange === 90
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                  ? 'bg-indigo-600 dark:bg-indigo-700 text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               90 Days
@@ -171,73 +172,85 @@ export default function Analytics() {
         {/* Stats Cards */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <SpotlightCard 
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              spotlightColor="rgba(99, 102, 241, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Total Webhooks</p>
-                  <p className="mt-2 text-3xl font-bold text-gray-900">{stats.totalWebhooks}</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Webhooks</p>
+                  <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">{stats.totalWebhooks}</p>
                 </div>
-                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <SpotlightCard 
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              spotlightColor="rgba(34, 197, 94, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Success Rate</p>
-                  <p className="mt-2 text-3xl font-bold text-green-600">{stats.successRate}%</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Success Rate</p>
+                  <p className="mt-2 text-3xl font-bold text-green-600 dark:text-green-400">{stats.successRate}%</p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <SpotlightCard 
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              spotlightColor="rgba(59, 130, 246, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Active Endpoints</p>
-                  <p className="mt-2 text-3xl font-bold text-gray-900">
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Endpoints</p>
+                  <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
                     {stats.activeEndpoints}/{stats.totalEndpoints}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                   </svg>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <SpotlightCard 
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              spotlightColor="rgba(168, 85, 247, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Quota Usage</p>
-                  <p className="mt-2 text-3xl font-bold text-gray-900">
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Quota Usage</p>
+                  <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
                     {stats.quotaUsed}/{stats.quotaLimit}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         )}
 
         {/* Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Webhook Volume Over Time - Line Chart */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Webhook Volume Over Time</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Webhook Volume Over Time</h3>
             {volumeChartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={volumeChartData}>
@@ -252,15 +265,15 @@ export default function Analytics() {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-300 flex items-center justify-center text-gray-500">
+              <div className="h-300 flex items-center justify-center text-gray-500 dark:text-gray-400">
                 No data available for the selected time range
               </div>
             )}
           </div>
 
           {/* Success Rate Trend - Area Chart */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Success vs Failed Webhooks</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Success vs Failed Webhooks</h3>
             {volumeChartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={volumeChartData}>
@@ -274,15 +287,15 @@ export default function Analytics() {
                 </AreaChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-300 flex items-center justify-center text-gray-500">
+              <div className="h-300 flex items-center justify-center text-gray-500 dark:text-gray-400">
                 No data available for the selected time range
               </div>
             )}
           </div>
 
           {/* Top Endpoints Performance - Bar Chart */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Top Endpoints by Volume</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Top Endpoints by Volume</h3>
             {topEndpoints.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={topEndpoints}>
@@ -295,15 +308,15 @@ export default function Analytics() {
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-300 flex items-center justify-center text-gray-500">
+              <div className="h-300 flex items-center justify-center text-gray-500 dark:text-gray-400">
                 No endpoint data available
               </div>
             )}
           </div>
 
           {/* Status Distribution - Pie Chart */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Webhook Status Distribution</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Webhook Status Distribution</h3>
             {statusData.length > 0 && statusData.some(d => d.value > 0) ? (
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -326,7 +339,7 @@ export default function Analytics() {
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-300 flex items-center justify-center text-gray-500">
+              <div className="h-300 flex items-center justify-center text-gray-500 dark:text-gray-400">
                 No webhook data available
               </div>
             )}
@@ -335,65 +348,65 @@ export default function Analytics() {
 
         {/* Endpoint Performance Table */}
         {endpointPerformance.length > 0 && (
-          <div className="mt-6 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900">Endpoint Performance Details</h3>
-              <p className="mt-1 text-sm text-gray-600">Last 30 days performance metrics</p>
+          <div className="mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Endpoint Performance Details</h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Last 30 days performance metrics</p>
             </div>
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead className="bg-gray-50 dark:bg-gray-900">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Endpoint
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Total Webhooks
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Successful
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Failed
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Success Rate
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Avg Attempts
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                   {endpointPerformance.map((endpoint) => (
-                    <tr key={endpoint._id} className="hover:bg-gray-50">
+                    <tr key={endpoint._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{endpoint.name}</div>
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">{endpoint.name}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{endpoint.totalWebhooks}</div>
+                        <div className="text-sm text-gray-900 dark:text-gray-300">{endpoint.totalWebhooks}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-green-600 font-medium">{endpoint.successful}</div>
+                        <div className="text-sm text-green-600 dark:text-green-400 font-medium">{endpoint.successful}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-red-600 font-medium">{endpoint.failed}</div>
+                        <div className="text-sm text-red-600 dark:text-red-400 font-medium">{endpoint.failed}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             endpoint.successRate >= 90
-                              ? 'bg-green-100 text-green-800'
+                              ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400'
                               : endpoint.successRate >= 70
-                              ? 'bg-yellow-100 text-yellow-800'
-                              : 'bg-red-100 text-red-800'
+                              ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400'
+                              : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400'
                           }`}
                         >
                           {endpoint.successRate}%
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{endpoint.avgAttempts}</div>
+                        <div className="text-sm text-gray-900 dark:text-gray-300">{endpoint.avgAttempts}</div>
                       </td>
                     </tr>
                   ))}

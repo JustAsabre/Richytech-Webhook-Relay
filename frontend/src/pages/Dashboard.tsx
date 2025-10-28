@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import DashboardLayout from '../components/DashboardLayout';
+import SpotlightCard from '../components/SpotlightCard';
 import api from '../services/api';
 import { formatRelativeTime, getStatusColor } from '../utils/helpers';
 import toast from 'react-hot-toast';
@@ -76,8 +77,8 @@ export default function Dashboard() {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
             Overview of your webhook relay service
           </p>
         </div>
@@ -87,16 +88,19 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="card animate-pulse">
-                <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
-                <div className="h-8 bg-gray-200 rounded w-3/4 mb-2"></div>
-                <div className="h-3 bg-gray-200 rounded w-1/3"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mb-4"></div>
+                <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
+                <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
               </div>
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Total Webhooks Today */}
-            <div className="card bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+            <SpotlightCard 
+              className="card bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200" 
+              spotlightColor="rgba(59, 130, 246, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-blue-600">Webhooks Today</p>
@@ -109,10 +113,13 @@ export default function Dashboard() {
                 </div>
                 <div className="text-4xl">📨</div>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Success Rate */}
-            <div className="card bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+            <SpotlightCard 
+              className="card bg-gradient-to-br from-green-50 to-green-100 border-green-200"
+              spotlightColor="rgba(34, 197, 94, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-green-600">Success Rate</p>
@@ -123,10 +130,13 @@ export default function Dashboard() {
                 </div>
                 <div className="text-4xl">✅</div>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Active Endpoints */}
-            <div className="card bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+            <SpotlightCard 
+              className="card bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200"
+              spotlightColor="rgba(168, 85, 247, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-purple-600">Active Endpoints</p>
@@ -139,10 +149,13 @@ export default function Dashboard() {
                 </div>
                 <div className="text-4xl">🎯</div>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Quota Usage */}
-            <div className="card bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
+            <SpotlightCard 
+              className="card bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200"
+              spotlightColor="rgba(249, 115, 22, 0.3)"
+            >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Quota Usage</p>
@@ -166,13 +179,13 @@ export default function Dashboard() {
                   }}
                 ></div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         )}
 
         {/* Quick Actions */}
         <div className="card">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link to="/endpoints" className="btn-primary text-center">
               ➕ Create Endpoint
@@ -192,8 +205,8 @@ export default function Dashboard() {
         {/* Recent Webhooks */}
         <div className="card">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Recent Webhooks</h2>
-            <Link to="/logs" className="text-sm text-primary-600 hover:text-primary-700 font-medium">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Webhooks</h2>
+            <Link to="/logs" className="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">
               View all →
             </Link>
           </div>
@@ -202,10 +215,10 @@ export default function Dashboard() {
             <div className="space-y-4">
               {[...Array(3)].map((_, i) => (
                 <div key={i} className="animate-pulse flex items-center space-x-4 py-3">
-                  <div className="h-10 w-10 bg-gray-200 rounded"></div>
+                  <div className="h-10 w-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                   <div className="flex-1 space-y-2">
-                    <div className="h-4 bg-gray-200 rounded w-1/4"></div>
-                    <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
+                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
                   </div>
                 </div>
               ))}
@@ -213,8 +226,8 @@ export default function Dashboard() {
           ) : recentWebhooks.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">📭</div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No webhooks yet</h3>
-              <p className="text-gray-500 mb-6">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No webhooks yet</h3>
+              <p className="text-gray-500 dark:text-gray-400 mb-6">
                 Create an endpoint and start receiving webhooks
               </p>
               <Link to="/endpoints" className="btn-primary inline-block">
@@ -223,47 +236,47 @@ export default function Dashboard() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
                   <tr>
-                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Endpoint
                     </th>
-                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Attempts
                     </th>
-                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Time
                     </th>
-                    <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
                   {recentWebhooks.map((webhook) => (
-                    <tr key={webhook._id} className="hover:bg-gray-50">
+                    <tr key={webhook._id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">
                           {webhook.endpointId?.name || 'Unknown'}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {getStatusBadge(webhook.status)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {Array.isArray(webhook.attempts) ? webhook.attempts.length : 0}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {formatRelativeTime(webhook.createdAt)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <Link
                           to={`/logs/${webhook._id}`}
-                          className="text-primary-600 hover:text-primary-900"
+                          className="text-primary-600 dark:text-primary-400 hover:text-primary-900 dark:hover:text-primary-300"
                         >
                           View
                         </Link>

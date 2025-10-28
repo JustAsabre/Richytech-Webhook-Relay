@@ -127,8 +127,8 @@ export default function ApiKeys() {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">API Keys</h1>
-            <p className="mt-1 text-sm text-gray-600">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">API Keys</h1>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
               Manage API keys for programmatic access
             </p>
           </div>
@@ -145,17 +145,17 @@ export default function ApiKeys() {
 
         {/* API Keys Table */}
         {loading ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8">
             <div className="animate-pulse space-y-4">
-              <div className="h-4 bg-gray-200 rounded w-1/4"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
             </div>
           </div>
         ) : apiKeys.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -167,8 +167,8 @@ export default function ApiKeys() {
                 d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
               />
             </svg>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No API keys</h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">No API keys</h3>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Get started by creating your first API key for programmatic access.
             </p>
             <div className="mt-6">
@@ -178,42 +178,42 @@ export default function ApiKeys() {
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="bg-gray-50 dark:bg-gray-900/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Key
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Last Used
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                 {apiKeys.map((apiKey) => (
-                  <tr key={apiKey._id} className="hover:bg-gray-50">
+                  <tr key={apiKey._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{apiKey.name}</div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">{apiKey.name}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">
                         Created {formatDistanceToNow(new Date(apiKey.createdAt), { addSuffix: true })}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <code className="text-xs bg-gray-100 px-2 py-1 rounded font-mono">
+                      <code className="text-xs bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-2 py-1 rounded font-mono">
                         {maskKey(apiKey.prefix)}
                       </code>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                       {apiKey.lastUsedAt
                         ? formatDistanceToNow(new Date(apiKey.lastUsedAt), { addSuffix: true })
                         : 'Never'}
@@ -222,8 +222,8 @@ export default function ApiKeys() {
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           apiKey.isActive
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-gray-100 text-gray-800'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                            : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
                         }`}
                       >
                         {apiKey.isActive ? 'Active' : 'Revoked'}
@@ -234,7 +234,7 @@ export default function ApiKeys() {
                         {apiKey.isActive && (
                           <button
                             onClick={() => handleRevokeKey(apiKey)}
-                            className="text-yellow-600 hover:text-yellow-900"
+                            className="text-yellow-600 hover:text-yellow-900 dark:text-yellow-500 dark:hover:text-yellow-400"
                             title="Revoke"
                           >
                             <svg
@@ -254,7 +254,7 @@ export default function ApiKeys() {
                         )}
                         <button
                           onClick={() => handleDeleteKey(apiKey)}
-                          className="text-red-600 hover:text-red-900"
+                          className="text-red-600 hover:text-red-900 dark:text-red-500 dark:hover:text-red-400"
                           title="Delete"
                         >
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -278,16 +278,16 @@ export default function ApiKeys() {
         {/* Create API Key Modal */}
         {showCreateModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-md w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-bold text-gray-900">Generate API Key</h2>
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Generate API Key</h2>
                   <button
                     onClick={() => {
                       setShowCreateModal(false);
                       setKeyName('');
                     }}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                   >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
@@ -302,7 +302,7 @@ export default function ApiKeys() {
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Key Name
                     </label>
                     <input
@@ -314,19 +314,19 @@ export default function ApiKeys() {
                       autoFocus
                       onKeyPress={(e) => e.key === 'Enter' && handleCreateKey()}
                     />
-                    <p className="mt-1 text-xs text-gray-500">
+                    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                       A friendly name to identify this key
                     </p>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                    <p className="text-sm text-blue-800">
+                  <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                    <p className="text-sm text-blue-800 dark:text-blue-400">
                       💡 The API key will only be shown once. Make sure to copy it and store it securely.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
+                <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <button
                     onClick={() => {
                       setShowCreateModal(false);
@@ -348,16 +348,16 @@ export default function ApiKeys() {
         {/* Show New API Key Modal */}
         {showKeyModal && newKeyData && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-2xl w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-bold text-gray-900">API Key Generated</h2>
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">API Key Generated</h2>
                   <button
                     onClick={() => {
                       setShowKeyModal(false);
                       setNewKeyData(null);
                     }}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                   >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
@@ -371,10 +371,10 @@ export default function ApiKeys() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
                     <div className="flex items-start">
                       <svg
-                        className="w-5 h-5 text-yellow-600 mt-0.5 mr-3"
+                        className="w-5 h-5 text-yellow-600 dark:text-yellow-500 mt-0.5 mr-3"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -385,10 +385,10 @@ export default function ApiKeys() {
                         />
                       </svg>
                       <div>
-                        <h3 className="text-sm font-medium text-yellow-800">
+                        <h3 className="text-sm font-medium text-yellow-800 dark:text-yellow-400">
                           Save this key now!
                         </h3>
-                        <p className="mt-1 text-sm text-yellow-700">
+                        <p className="mt-1 text-sm text-yellow-700 dark:text-yellow-500">
                           This is the only time you'll see the full API key. Copy it and store it securely.
                         </p>
                       </div>
@@ -396,7 +396,7 @@ export default function ApiKeys() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Your API Key
                     </label>
                     <div className="flex gap-2">
@@ -449,16 +449,16 @@ export default function ApiKeys() {
                     </div>
                   </div>
 
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">Usage Example</h4>
-                    <pre className="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
+                  <div className="bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">Usage Example</h4>
+                    <pre className="text-xs bg-gray-900 dark:bg-black text-gray-100 p-3 rounded overflow-x-auto">
 {`curl -H "X-API-Key: ${newKeyData.key}" \\
      https://api.yourdomain.com/endpoint`}
                     </pre>
                   </div>
                 </div>
 
-                <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
+                <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <button
                     onClick={() => {
                       setShowKeyModal(false);
@@ -477,13 +477,13 @@ export default function ApiKeys() {
         {/* Revoke Confirmation Modal */}
         {showRevokeModal && revokingKey && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-md w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
                       <svg
-                        className="w-6 h-6 text-yellow-600"
+                        className="w-6 h-6 text-yellow-600 dark:text-yellow-500"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -498,15 +498,15 @@ export default function ApiKeys() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900">Revoke API Key</h3>
-                    <p className="mt-1 text-sm text-gray-500">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Revoke API Key</h3>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                       Are you sure you want to revoke "{revokingKey.name}"?
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
-                  <p className="text-sm text-yellow-800">
+                <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3 mb-4">
+                  <p className="text-sm text-yellow-800 dark:text-yellow-400">
                     ⚠️ This will immediately stop all API requests using this key. This action can be
                     undone later by updating the key status.
                   </p>
@@ -522,7 +522,7 @@ export default function ApiKeys() {
                   >
                     Cancel
                   </button>
-                  <button onClick={confirmRevoke} className="bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
+                  <button onClick={confirmRevoke} className="bg-yellow-600 hover:bg-yellow-700 dark:bg-yellow-700 dark:hover:bg-yellow-800 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
                     Revoke Key
                   </button>
                 </div>
@@ -534,13 +534,13 @@ export default function ApiKeys() {
         {/* Delete Confirmation Modal */}
         {showDeleteModal && deletingKey && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-md w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
                       <svg
-                        className="w-6 h-6 text-red-600"
+                        className="w-6 h-6 text-red-600 dark:text-red-500"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -555,15 +555,15 @@ export default function ApiKeys() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900">Delete API Key</h3>
-                    <p className="mt-1 text-sm text-gray-500">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Delete API Key</h3>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                       Are you sure you want to permanently delete "{deletingKey.name}"?
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
-                  <p className="text-sm text-red-800">
+                <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-4">
+                  <p className="text-sm text-red-800 dark:text-red-400">
                     ⚠️ This action cannot be undone. The API key will be permanently deleted and all
                     requests using this key will fail immediately.
                   </p>
@@ -581,7 +581,7 @@ export default function ApiKeys() {
                   </button>
                   <button 
                     onClick={confirmDelete} 
-                    className="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                    className="bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200"
                   >
                     Delete Permanently
                   </button>

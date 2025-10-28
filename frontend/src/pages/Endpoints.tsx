@@ -184,8 +184,8 @@ export default function Endpoints() {
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Endpoints</h1>
-            <p className="mt-1 text-sm text-gray-600">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Endpoints</h1>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
               Manage your webhook endpoints and destinations
             </p>
           </div>
@@ -202,17 +202,17 @@ export default function Endpoints() {
 
         {/* Endpoints Table */}
         {loading ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8">
             <div className="animate-pulse space-y-4">
-              <div className="h-4 bg-gray-200 rounded w-1/4"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-              <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
             </div>
           </div>
         ) : endpoints.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -224,8 +224,8 @@ export default function Endpoints() {
                 d="M13 10V3L4 14h7v7l9-11h-7z"
               />
             </svg>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No endpoints</h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">No endpoints</h3>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Get started by creating your first webhook endpoint.
             </p>
             <div className="mt-6">
@@ -237,38 +237,38 @@ export default function Endpoints() {
         ) : (
           <>
             {/* Desktop Table View */}
-            <div className="hidden lg:block bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                         Name
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                         Destination URL
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                         Webhook URL
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                         Status
                       </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                         Actions
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     {endpoints.map((endpoint) => (
-                      <tr key={endpoint._id} className="hover:bg-gray-50">
+                      <tr key={endpoint._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             <div>
-                              <div className="text-sm font-medium text-gray-900">
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">
                                 {endpoint.name}
                               </div>
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm text-gray-500 dark:text-gray-400">
                                 {endpoint.requiresSignature && (
                                   <span className="inline-flex items-center text-xs">
                                     <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -286,18 +286,18 @@ export default function Endpoints() {
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          <div className="text-sm text-gray-900 max-w-xs truncate">
+                          <div className="text-sm text-gray-900 dark:text-gray-300 max-w-xs truncate">
                             {endpoint.destinationUrl}
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
-                            <code className="text-xs bg-gray-100 px-2 py-1 rounded max-w-xs truncate">
+                            <code className="text-xs bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-2 py-1 rounded max-w-xs truncate">
                               {endpoint.webhookUrl}
                             </code>
                             <button
                               onClick={() => handleCopyUrl(endpoint.webhookUrl)}
-                              className="text-gray-400 hover:text-gray-600"
+                              className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
                               title="Copy URL"
                             >
                               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -316,8 +316,8 @@ export default function Endpoints() {
                             onClick={() => handleToggleActive(endpoint)}
                             className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                               endpoint.isActive
-                                ? 'bg-green-100 text-green-800'
-                                : 'bg-gray-100 text-gray-800'
+                                ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400'
+                                : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'
                             }`}
                           >
                             {endpoint.isActive ? 'Active' : 'Inactive'}
@@ -327,7 +327,7 @@ export default function Endpoints() {
                           <div className="flex justify-end gap-2">
                             <button
                               onClick={() => handleTest(endpoint)}
-                              className="text-blue-600 hover:text-blue-900"
+                              className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300"
                               title="Test Endpoint"
                             >
                               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -347,7 +347,7 @@ export default function Endpoints() {
                             </button>
                             <button
                               onClick={() => handleOpenModal(endpoint)}
-                              className="text-primary-600 hover:text-primary-900"
+                              className="text-primary-600 dark:text-primary-400 hover:text-primary-900 dark:hover:text-primary-300"
                               title="Edit"
                             >
                               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -361,7 +361,7 @@ export default function Endpoints() {
                             </button>
                             <button
                               onClick={() => handleDelete(endpoint)}
-                              className="text-red-600 hover:text-red-900"
+                              className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300"
                               title="Delete"
                             >
                               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -385,12 +385,12 @@ export default function Endpoints() {
             {/* Mobile Card View */}
             <div className="lg:hidden space-y-4">
               {endpoints.map((endpoint) => (
-                <div key={endpoint._id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+                <div key={endpoint._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex-1">
-                      <h3 className="text-sm font-medium text-gray-900">{endpoint.name}</h3>
+                      <h3 className="text-sm font-medium text-gray-900 dark:text-white">{endpoint.name}</h3>
                       {endpoint.requiresSignature && (
-                        <span className="inline-flex items-center text-xs text-gray-500 mt-1">
+                        <span className="inline-flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1">
                           <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path
                               fillRule="evenodd"
@@ -406,8 +406,8 @@ export default function Endpoints() {
                       onClick={() => handleToggleActive(endpoint)}
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ml-2 ${
                         endpoint.isActive
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-gray-100 text-gray-800'
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                          : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
                       }`}
                     >
                       {endpoint.isActive ? 'Active' : 'Inactive'}
@@ -416,19 +416,19 @@ export default function Endpoints() {
                   
                   <div className="space-y-2 text-sm">
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Destination URL</p>
-                      <p className="text-gray-900 break-all">{endpoint.destinationUrl}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Destination URL</p>
+                      <p className="text-gray-900 dark:text-gray-300 break-all">{endpoint.destinationUrl}</p>
                     </div>
                     
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Webhook URL</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Webhook URL</p>
                       <div className="flex items-center gap-2">
-                        <code className="text-xs bg-gray-100 px-2 py-1 rounded break-all flex-1">
+                        <code className="text-xs bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-2 py-1 rounded break-all flex-1">
                           {endpoint.webhookUrl}
                         </code>
                         <button
                           onClick={() => handleCopyUrl(endpoint.webhookUrl)}
-                          className="text-gray-400 hover:text-gray-600 flex-shrink-0"
+                          className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 flex-shrink-0"
                           title="Copy URL"
                         >
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -444,10 +444,10 @@ export default function Endpoints() {
                     </div>
                   </div>
                   
-                  <div className="flex gap-2 mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex gap-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <button
                       onClick={() => handleTest(endpoint)}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-lg border border-blue-200"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800"
                       title="Test"
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -468,7 +468,7 @@ export default function Endpoints() {
                     </button>
                     <button
                       onClick={() => handleOpenModal(endpoint)}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-primary-600 hover:bg-primary-50 rounded-lg border border-primary-200"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-lg border border-primary-200 dark:border-primary-800"
                       title="Edit"
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -483,7 +483,7 @@ export default function Endpoints() {
                     </button>
                     <button
                       onClick={() => handleDelete(endpoint)}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg border border-red-200"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg border border-red-200 dark:border-red-800"
                       title="Delete"
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -506,15 +506,15 @@ export default function Endpoints() {
         {/* Create/Edit Modal */}
         {showModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                     {editingEndpoint ? 'Edit Endpoint' : 'Create Endpoint'}
                   </h2>
                   <button
                     onClick={handleCloseModal}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                   >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
@@ -529,7 +529,7 @@ export default function Endpoints() {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Endpoint Name
                     </label>
                     <input
@@ -543,7 +543,7 @@ export default function Endpoints() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Destination URL
                     </label>
                     <input
@@ -556,14 +556,14 @@ export default function Endpoints() {
                       placeholder="https://your-app.com/webhook"
                       required
                     />
-                    <p className="mt-1 text-xs text-gray-500">
+                    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                       Where webhooks will be forwarded to
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Retry Attempts
                       </label>
                       <input
@@ -580,7 +580,7 @@ export default function Endpoints() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Retry Delay (seconds)
                       </label>
                       <input
@@ -605,9 +605,9 @@ export default function Endpoints() {
                         onChange={(e) =>
                           setFormData({ ...formData, isActive: e.target.checked })
                         }
-                        className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                        className="rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-700"
                       />
-                      <span className="ml-2 text-sm text-gray-700">Active</span>
+                      <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">Active</span>
                     </label>
 
                     <label className="flex items-center">
@@ -617,13 +617,13 @@ export default function Endpoints() {
                         onChange={(e) =>
                           setFormData({ ...formData, requiresSignature: e.target.checked })
                         }
-                        className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                        className="rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-700"
                       />
-                      <span className="ml-2 text-sm text-gray-700">Require HMAC Signature</span>
+                      <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">Require HMAC Signature</span>
                     </label>
                   </div>
 
-                  <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
+                  <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                     <button
                       type="button"
                       onClick={handleCloseModal}
