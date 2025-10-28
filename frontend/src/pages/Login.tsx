@@ -135,23 +135,6 @@ export default function Login() {
               </button>
             </div>
           </form>
-
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">For testing</span>
-              </div>
-            </div>
-
-            <div className="mt-4 text-sm text-gray-600 bg-gray-50 rounded-lg p-4">
-              <p className="font-medium mb-2">Test Credentials:</p>
-              <p><strong>Email:</strong> test@example.com</p>
-              <p><strong>Password:</strong> Test@123456</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
