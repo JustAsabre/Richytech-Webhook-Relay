@@ -12,6 +12,9 @@ const logger = require('./src/utils/logger');
 
 const PORT = process.env.PORT || 5000;
 
+// Start webhook worker (processes queued webhooks)
+require('./src/services/webhookWorker');
+
 // Connect to database and start server
 const startServer = async () => {
   try {
