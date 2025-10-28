@@ -1,6 +1,41 @@
-# 🚀 COMPLETE BEGINNER'S GUIDE: Deploy to Heroku & Vercel (Website Only - No Code!)
+# 🚀 COMPLETE BEGINNER'S GUIDE: Deploy to Fly.io & Vercel (Recommended)
 
-**For Complete Beginners** | **No Terminal Required** | **Step-by-Step with Screenshots**
+**IMPORTANT:** This guide is outdated. Please use the **FLYIO_DEPLOY_GUIDE.md** instead.
+
+Fly.io offers a better free tier with:
+- ✅ More generous free tier (3 VMs vs Render's 750 hours/month)
+- ✅ Never sleeps (Render free tier sleeps after 15min of inactivity)
+- ✅ Global edge deployment
+- ✅ Faster performance
+- ✅ Automatic HTTPS
+
+**See FLYIO_DEPLOY_GUIDE.md for the complete, up-to-date deployment guide.**
+
+---
+
+## Alternative: Deploy to Render & Vercel
+
+If you prefer Render over Fly.io, follow these steps:
+
+
+**For Complete Beginners** | **Click-Only Deployment** | **Step-by-Step Screenshots**
+
+**⚠️ THIS GUIDE IS OUTDATED ⚠️**
+
+**Please use one of these instead:**
+- **RECOMMENDED:** `FLYIO_DEPLOY_GUIDE.md` - Best free tier, never sleeps, perfect for webhooks
+- **ALTERNATIVE:** `RENDER_DEPLOY_GUIDE.md` - If you prefer Render (warning: app sleeps after 15min)
+
+---
+
+## Why This Guide is Deprecated
+
+This guide was originally written for Heroku, which:
+- ❌ Eliminated their free tier in November 2022
+- ❌ Now requires a credit card for any usage
+- ❌ Is more expensive than alternatives
+
+**We've migrated to better platforms:**
 
 **Created:** October 28, 2025  
 **Time Required:** 45 minutes  
@@ -25,10 +60,10 @@ By the end of this guide, your Webhook Relay app will be:
 1. **Set Up Free Accounts** (10 mins)
    - MongoDB Atlas (database)
    - Redis Cloud (cache)
-   - Heroku (backend hosting)
+   - Render (backend hosting) - **Note: Render free tier has limitations**
    - Vercel (frontend hosting)
 
-2. **Deploy Backend to Heroku** (20 mins)
+2. **Deploy Backend to Render** (15 mins)
    - Connect your GitHub
    - Configure settings
    - Click deploy!
