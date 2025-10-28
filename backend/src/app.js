@@ -19,6 +19,9 @@ const { apiLimiter } = require('./middleware/rateLimiter');
 // Create Express app
 const app = express();
 
+// Trust proxy - Required for Fly.io, Vercel, and other reverse proxies
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet()); // Security headers
 app.use(mongoSanitize()); // Prevent NoSQL injection
