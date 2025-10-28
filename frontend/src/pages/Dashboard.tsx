@@ -24,7 +24,12 @@ interface RecentWebhook {
   };
   status: 'pending' | 'success' | 'failed';
   payload: unknown;
-  attempts: number;
+  attempts: Array<{
+    attemptNumber: number;
+    attemptedAt: string;
+    success: boolean;
+    _id: string;
+  }>;
   createdAt: string;
 }
 
@@ -250,7 +255,7 @@ export default function Dashboard() {
                         {getStatusBadge(webhook.status)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {webhook.attempts}
+                        {Array.isArray(webhook.attempts) ? webhook.attempts.length : 0}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {formatRelativeTime(webhook.createdAt)}
