@@ -22,6 +22,22 @@ export default {
           950: '#082f49',
         },
       },
+      animation: {
+        aurora: "aurora 30s linear infinite",
+      },
+      keyframes: {
+        aurora: {
+          "0%": {
+            transform: "rotate(0deg) translateY(0px)",
+          },
+          "50%": {
+            transform: "rotate(180deg) translateY(-50px)",
+          },
+          "100%": {
+            transform: "rotate(360deg) translateY(0px)",
+          },
+        },
+      },
     },
   },
   plugins: [],
