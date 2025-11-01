@@ -126,19 +126,20 @@ export default function Analytics() {
 
   return (
     <DashboardLayout>
-      <div className="p-6">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h1>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+      <div className="p-4 sm:p-6">
+        {/* Header - Mobile Optimized */}
+        <div className="mb-6 animate-fade-in-down">
+          <div className="mb-4">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h1>
+            <p className="mt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               Comprehensive insights into your webhook activity
             </p>
           </div>
-          <div className="flex gap-2">
+          {/* Time Range Buttons - Responsive */}
+          <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
             <button
               onClick={() => setTimeRange(7)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
                 timeRange === 7
                   ? 'bg-indigo-600 dark:bg-indigo-700 text-white'
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -148,7 +149,7 @@ export default function Analytics() {
             </button>
             <button
               onClick={() => setTimeRange(30)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
                 timeRange === 30
                   ? 'bg-indigo-600 dark:bg-indigo-700 text-white'
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -158,7 +159,7 @@ export default function Analytics() {
             </button>
             <button
               onClick={() => setTimeRange(90)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
                 timeRange === 90
                   ? 'bg-indigo-600 dark:bg-indigo-700 text-white'
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -169,20 +170,20 @@ export default function Analytics() {
           </div>
         </div>
 
-        {/* Stats Cards */}
+        {/* Stats Cards - Mobile Optimized */}
         {stats && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
             <SpotlightCard 
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6 animate-fade-in-left animate-delay-100 hover-lift"
               spotlightColor="rgba(99, 102, 241, 0.3)"
             >
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Webhooks</p>
-                  <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">{stats.totalWebhooks}</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 truncate">Total Webhooks</p>
+                  <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{stats.totalWebhooks}</p>
                 </div>
-                <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center flex-shrink-0 ml-2">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -190,16 +191,16 @@ export default function Analytics() {
             </SpotlightCard>
 
             <SpotlightCard 
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6 animate-fade-in-left animate-delay-200 hover-lift"
               spotlightColor="rgba(34, 197, 94, 0.3)"
             >
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Success Rate</p>
-                  <p className="mt-2 text-3xl font-bold text-green-600 dark:text-green-400">{stats.successRate}%</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 truncate">Success Rate</p>
+                  <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">{stats.successRate}%</p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0 ml-2">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -207,18 +208,18 @@ export default function Analytics() {
             </SpotlightCard>
 
             <SpotlightCard 
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6 animate-fade-in-left animate-delay-300 hover-lift"
               spotlightColor="rgba(59, 130, 246, 0.3)"
             >
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Endpoints</p>
-                  <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 truncate">Active Endpoints</p>
+                  <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                     {stats.activeEndpoints}/{stats.totalEndpoints}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0 ml-2">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                   </svg>
                 </div>
@@ -226,18 +227,18 @@ export default function Analytics() {
             </SpotlightCard>
 
             <SpotlightCard 
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6 animate-fade-in-left animate-delay-400 hover-lift"
               spotlightColor="rgba(168, 85, 247, 0.3)"
             >
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Quota Usage</p>
-                  <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 truncate">Quota Usage</p>
+                  <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                     {stats.quotaUsed}/{stats.quotaLimit}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0 ml-2">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
@@ -249,7 +250,7 @@ export default function Analytics() {
         {/* Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Webhook Volume Over Time - Line Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 animate-fade-in-up animate-delay-100">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Webhook Volume Over Time</h3>
             {volumeChartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
@@ -272,7 +273,7 @@ export default function Analytics() {
           </div>
 
           {/* Success Rate Trend - Area Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 animate-fade-in-up animate-delay-200">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Success vs Failed Webhooks</h3>
             {volumeChartData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
@@ -294,7 +295,7 @@ export default function Analytics() {
           </div>
 
           {/* Top Endpoints Performance - Bar Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 animate-fade-in-up animate-delay-300">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Top Endpoints by Volume</h3>
             {topEndpoints.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
@@ -315,7 +316,7 @@ export default function Analytics() {
           </div>
 
           {/* Status Distribution - Pie Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 animate-fade-in-up animate-delay-400">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Webhook Status Distribution</h3>
             {statusData.length > 0 && statusData.some(d => d.value > 0) ? (
               <ResponsiveContainer width="100%" height={300}>

@@ -76,7 +76,7 @@ export default function Dashboard() {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div>
+        <div className="animate-fade-in-down">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
             Overview of your webhook relay service
@@ -98,7 +98,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Total Webhooks Today */}
             <SpotlightCard 
-              className="card bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200" 
+              className="card bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 animate-fade-in-left animate-delay-100 hover-lift" 
               spotlightColor="rgba(59, 130, 246, 0.3)"
             >
               <div className="flex items-center justify-between">
@@ -117,7 +117,7 @@ export default function Dashboard() {
 
             {/* Success Rate */}
             <SpotlightCard 
-              className="card bg-gradient-to-br from-green-50 to-green-100 border-green-200"
+              className="card bg-gradient-to-br from-green-50 to-green-100 border-green-200 animate-fade-in-left animate-delay-200 hover-lift"
               spotlightColor="rgba(34, 197, 94, 0.3)"
             >
               <div className="flex items-center justify-between">
@@ -134,7 +134,7 @@ export default function Dashboard() {
 
             {/* Active Endpoints */}
             <SpotlightCard 
-              className="card bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200"
+              className="card bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 animate-fade-in-left animate-delay-300 hover-lift"
               spotlightColor="rgba(168, 85, 247, 0.3)"
             >
               <div className="flex items-center justify-between">
@@ -153,7 +153,7 @@ export default function Dashboard() {
 
             {/* Quota Usage */}
             <SpotlightCard 
-              className="card bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200"
+              className="card bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 animate-fade-in-left animate-delay-400 hover-lift"
               spotlightColor="rgba(249, 115, 22, 0.3)"
             >
               <div className="flex items-center justify-between">
@@ -184,7 +184,7 @@ export default function Dashboard() {
         )}
 
         {/* Quick Actions */}
-        <div className="card">
+        <div className="card animate-fade-in-right animate-delay-100">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link to="/endpoints" className="btn-primary text-center">
@@ -203,7 +203,7 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Webhooks */}
-        <div className="card">
+        <div className="card animate-fade-in-up animate-delay-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Webhooks</h2>
             <Link to="/logs" className="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium">

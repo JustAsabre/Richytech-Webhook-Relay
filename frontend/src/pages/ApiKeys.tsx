@@ -125,7 +125,7 @@ export default function ApiKeys() {
     <DashboardLayout>
       <div className="p-6">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-6 animate-fade-in-down">
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">API Keys</h1>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -178,7 +178,7 @@ export default function ApiKeys() {
             </div>
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden animate-fade-in-right animate-delay-100">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="bg-gray-50 dark:bg-gray-900/50">
                 <tr>

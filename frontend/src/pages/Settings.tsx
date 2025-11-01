@@ -189,7 +189,7 @@ export default function Settings() {
     <DashboardLayout>
       <div className="p-6">
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-6 animate-fade-in-down">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Settings</h1>
           <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Manage your account settings and preferences
@@ -235,7 +235,7 @@ export default function Settings() {
         {/* Profile Tab */}
         {activeTab === 'profile' && user && (
           <div className="max-w-2xl">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 animate-fade-in-up">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Profile Information</h2>
               <form onSubmit={handleUpdateProfile} className="space-y-6">
                 <div>

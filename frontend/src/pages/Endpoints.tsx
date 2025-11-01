@@ -182,7 +182,7 @@ export default function Endpoints() {
     <DashboardLayout>
       <div className="p-6">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-6 animate-fade-in-down">
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Endpoints</h1>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -237,7 +237,7 @@ export default function Endpoints() {
         ) : (
           <>
             {/* Desktop Table View */}
-            <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden animate-fade-in-up animate-delay-100">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-900">
@@ -384,8 +384,8 @@ export default function Endpoints() {
 
             {/* Mobile Card View */}
             <div className="lg:hidden space-y-4">
-              {endpoints.map((endpoint) => (
-                <div key={endpoint._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
+              {endpoints.map((endpoint, index) => (
+                <div key={endpoint._id} className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 animate-fade-in-left hover-lift animate-delay-${Math.min((index % 5 + 1) * 100, 500)}`}>
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex-1">
                       <h3 className="text-sm font-medium text-gray-900 dark:text-white">{endpoint.name}</h3>
